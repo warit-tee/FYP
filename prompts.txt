@@ -1,0 +1,5 @@
+I am currently working on writing an essay on the topic of [insert topic] with a specific focus on [essay type]. My intention is to create a cohesive and well-structured piece that presents my ideas clearly and effectively, while adhering to a word count of [number of words]. 
+
+I want you to generate an essay that consists solely of paragraphs, avoiding any bullet points. The content should be engaging, informative, and reflective of the chosen essay type. Ensure that the writing flows logically and supports the overall argument or theme of the essay. 
+
+The goal is to produce a polished essay that meets the specified word count and captures the essence of the topic in a compelling manner. This essay should not only inform but also engage the reader, prompting them to think critically about the subject matter.
