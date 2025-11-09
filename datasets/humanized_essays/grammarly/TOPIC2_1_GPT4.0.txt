@@ -1,0 +1,5 @@
+Fixing a broken fan can seem tricky at first, but it gets easier if you go step by step. First, unplug the fan to stay safe. Look for loose screws, broken blades, or damaged cords on the outside. If the blades are stuck or not spinning well, dust or dirt might be the cause. Remove the grill and clean the blades and motor housing with a soft brush or cloth. Often, this simple cleaning is enough to get your fan working again.
+
+If cleaning doesn’t solve the problem, check the electrical parts. Use a screwdriver to open the fan’s casing and look at the wiring. A loose connection or a burnt wire can sometimes stop the fan from working. If you have a multimeter, test the switch and the capacitor. The capacitor is a small cylinder that helps the motor start, and it’s often replaced. You can usually find a matching one at a hardware store. If the motor shaft seems stuck, add a few drops of machine oil.
+
+Once you finish the repairs, put the fan back together and plug it in to see if it works. With a little care and a few basic tools, you can fix a broken fan yourself.
