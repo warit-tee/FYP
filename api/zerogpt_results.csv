@@ -1,31 +1,210 @@
 filepath,filename,fakePercentage,isHuman,feedback,aiWords,textWords
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,593,593
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,450,450
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,258,258
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,882,882
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,276,276
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,551,551
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,266,266
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,524,524
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,544,544
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,99.99,0,Your Text is AI/GPT Generated,980,980
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,496,496
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,266,266
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,926,926
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,99.22,0,Your Text is AI/GPT Generated,884,891
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,98.61,0,Your Text is AI/GPT Generated,921,934
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,99.99,0,Your Text is AI/GPT Generated,899,899
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,219,219
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,998,998
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,923,923
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,72.06,12.5,Most of Your Text is AI/GPT Generated,763,988
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,549,549
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,263,263
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,96.16,0,Your Text is AI/GPT Generated,450,468
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,229,229
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,517,517
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,281,281
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,287,287
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,251,251
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,79.21,12.5,Most of Your Text is AI/GPT Generated,476,578
-/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,893,893
+../datasets/essays/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,593,593
+../datasets/essays/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,450,450
+../datasets/essays/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,258,258
+../datasets/essays/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,882,882
+../datasets/essays/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,276,276
+../datasets/essays/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,551,551
+../datasets/essays/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,266,266
+../datasets/essays/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,524,524
+../datasets/essays/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,544,544
+../datasets/essays/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,99.99,0,Your Text is AI/GPT Generated,980,980
+../datasets/essays/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,496,496
+../datasets/essays/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,266,266
+../datasets/essays/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,926,926
+../datasets/essays/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,99.22,0,Your Text is AI/GPT Generated,884,891
+../datasets/essays/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,98.61,0,Your Text is AI/GPT Generated,921,934
+../datasets/essays/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,99.99,0,Your Text is AI/GPT Generated,899,899
+../datasets/essays/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,219,219
+../datasets/essays/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,998,998
+../datasets/essays/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,923,923
+../datasets/essays/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,72.07,12.5,Most of Your Text is AI/GPT Generated,763,988
+../datasets/essays/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,549,549
+../datasets/essays/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,263,263
+../datasets/essays/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,96.16,0,Your Text is AI/GPT Generated,450,468
+../datasets/essays/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,229,229
+../datasets/essays/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,517,517
+../datasets/essays/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,281,281
+../datasets/essays/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,287,287
+../datasets/essays/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,251,251
+../datasets/essays/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,79.21,12.5,Most of Your Text is AI/GPT Generated,476,578
+../datasets/essays/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,893,893
+../datasets/humanized_essays/AIHumanizer/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,602,602
+../datasets/humanized_essays/AIHumanizer/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,525,525
+../datasets/humanized_essays/AIHumanizer/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,307,307
+../datasets/humanized_essays/AIHumanizer/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,95.64,0,Your Text is AI/GPT Generated,813,850
+../datasets/humanized_essays/AIHumanizer/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,334,334
+../datasets/humanized_essays/AIHumanizer/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,566,566
+../datasets/humanized_essays/AIHumanizer/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,308,308
+../datasets/humanized_essays/AIHumanizer/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,95.86,0,Your Text is AI/GPT Generated,486,507
+../datasets/humanized_essays/AIHumanizer/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,576,576
+../datasets/humanized_essays/AIHumanizer/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,955,955
+../datasets/humanized_essays/AIHumanizer/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,98.73,0,Your Text is AI/GPT Generated,465,471
+../datasets/humanized_essays/AIHumanizer/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,269,269
+../datasets/humanized_essays/AIHumanizer/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,886,886
+../datasets/humanized_essays/AIHumanizer/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,99.24,0,Your Text is AI/GPT Generated,904,911
+../datasets/humanized_essays/AIHumanizer/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,995,995
+../datasets/humanized_essays/AIHumanizer/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,914,914
+../datasets/humanized_essays/AIHumanizer/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,212,212
+../datasets/humanized_essays/AIHumanizer/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,1011,1011
+../datasets/humanized_essays/AIHumanizer/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,938,938
+../datasets/humanized_essays/AIHumanizer/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,92.24,0,Your Text is AI/GPT Generated,879,914
+../datasets/humanized_essays/AIHumanizer/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,562,562
+../datasets/humanized_essays/AIHumanizer/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,288,288
+../datasets/humanized_essays/AIHumanizer/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,510,510
+../datasets/humanized_essays/AIHumanizer/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,292,292
+../datasets/humanized_essays/AIHumanizer/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,598,598
+../datasets/humanized_essays/AIHumanizer/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,297,297
+../datasets/humanized_essays/AIHumanizer/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,322,322
+../datasets/humanized_essays/AIHumanizer/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,287,287
+../datasets/humanized_essays/AIHumanizer/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,601,601
+../datasets/humanized_essays/AIHumanizer/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,872,872
+../datasets/humanized_essays/Grammarly/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,512,512
+../datasets/humanized_essays/Grammarly/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,430,430
+../datasets/humanized_essays/Grammarly/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,255,255
+../datasets/humanized_essays/Grammarly/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,100,0,Your Text is AI/GPT Generated,627,627
+../datasets/humanized_essays/Grammarly/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,253,253
+../datasets/humanized_essays/Grammarly/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,455,455
+../datasets/humanized_essays/Grammarly/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,241,241
+../datasets/humanized_essays/Grammarly/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,95.51,0,Your Text is AI/GPT Generated,446,467
+../datasets/humanized_essays/Grammarly/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,481,481
+../datasets/humanized_essays/Grammarly/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,100,0,Your Text is AI/GPT Generated,827,827
+../datasets/humanized_essays/Grammarly/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,100.0,12.5,Most of Your Text is AI/GPT Generated,353,353
+../datasets/humanized_essays/Grammarly/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,251,251
+../datasets/humanized_essays/Grammarly/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,526,526
+../datasets/humanized_essays/Grammarly/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,99.99,0,Your Text is AI/GPT Generated,766,766
+../datasets/humanized_essays/Grammarly/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,99.99,0,Your Text is AI/GPT Generated,788,788
+../datasets/humanized_essays/Grammarly/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,92.35,0,Your Text is AI/GPT Generated,736,773
+../datasets/humanized_essays/Grammarly/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,181,181
+../datasets/humanized_essays/Grammarly/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,99.99,0,Your Text is AI/GPT Generated,941,941
+../datasets/humanized_essays/Grammarly/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,100,0,Your Text is AI/GPT Generated,831,831
+../datasets/humanized_essays/Grammarly/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,74.28,25,Your Text is Most Likely AI/GPT generated,647,773
+../datasets/humanized_essays/Grammarly/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,482,482
+../datasets/humanized_essays/Grammarly/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,247,247
+../datasets/humanized_essays/Grammarly/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,406,406
+../datasets/humanized_essays/Grammarly/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,204,204
+../datasets/humanized_essays/Grammarly/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,488,488
+../datasets/humanized_essays/Grammarly/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,257,257
+../datasets/humanized_essays/Grammarly/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,288,288
+../datasets/humanized_essays/Grammarly/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,235,235
+../datasets/humanized_essays/Grammarly/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,541,541
+../datasets/humanized_essays/Grammarly/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,99.99,0,Your Text is AI/GPT Generated,834,834
+../datasets/humanized_essays/HumanizeAI/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,24.06,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",232,787
+../datasets/humanized_essays/HumanizeAI/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,26.68,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",206,528
+../datasets/humanized_essays/HumanizeAI/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,6.59,100,Your Text is Human Written,38,315
+../datasets/humanized_essays/HumanizeAI/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,35.91,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",484,911
+../datasets/humanized_essays/HumanizeAI/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,53.62,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",226,286
+../datasets/humanized_essays/HumanizeAI/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,15.88,100,Your Text is Human Written,138,634
+../datasets/humanized_essays/HumanizeAI/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,283
+../datasets/humanized_essays/HumanizeAI/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,42.7,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",354,550
+../datasets/humanized_essays/HumanizeAI/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,47.34,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",318,569
+../datasets/humanized_essays/HumanizeAI/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,39.99,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",604,1099
+../datasets/humanized_essays/HumanizeAI/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,17.62,100,Your Text is Human Written,187,567
+../datasets/humanized_essays/HumanizeAI/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,15.86,87.5,Your Text is Most Likely Human written,86,361
+../datasets/humanized_essays/HumanizeAI/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,39.3,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",552,962
+../datasets/humanized_essays/HumanizeAI/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,22.06,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",364,963
+../datasets/humanized_essays/HumanizeAI/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,22.07,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",353,1079
+../datasets/humanized_essays/HumanizeAI/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,3.33,100,Your Text is Human Written,59,992
+../datasets/humanized_essays/HumanizeAI/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,21.77,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",78,199
+../datasets/humanized_essays/HumanizeAI/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,34.91,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",519,1105
+../datasets/humanized_essays/HumanizeAI/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,11.42,100,Your Text is Human Written,182,1031
+../datasets/humanized_essays/HumanizeAI/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,4.97,100,Your Text is Human Written,83,1087
+../datasets/humanized_essays/HumanizeAI/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,30.46,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",248,566
+../datasets/humanized_essays/HumanizeAI/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,20.66,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",103,298
+../datasets/humanized_essays/HumanizeAI/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,13.76,100,Your Text is Human Written,118,491
+../datasets/humanized_essays/HumanizeAI/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,27.7,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",92,257
+../datasets/humanized_essays/HumanizeAI/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,24.22,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",227,594
+../datasets/humanized_essays/HumanizeAI/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,62.9,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",260,360
+../datasets/humanized_essays/HumanizeAI/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,16.39,100,Your Text is Human Written,67,296
+../datasets/humanized_essays/HumanizeAI/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,10.22,100,Your Text is Human Written,41,279
+../datasets/humanized_essays/HumanizeAI/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,14.0,100,Your Text is Human Written,173,664
+../datasets/humanized_essays/HumanizeAI/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,4.02,100,Your Text is Human Written,58,978
+../datasets/humanized_essays/Quillbot/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,612,612
+../datasets/humanized_essays/Quillbot/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,81.74,0,Your Text is AI/GPT Generated,394,482
+../datasets/humanized_essays/Quillbot/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,266,266
+../datasets/humanized_essays/Quillbot/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,79.73,12.5,Most of Your Text is AI/GPT Generated,747,889
+../datasets/humanized_essays/Quillbot/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,97.15,50,"Your Text contains mixed signals, with some parts generated by AI/GPT",273,281
+../datasets/humanized_essays/Quillbot/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,86.79,0,Your Text is AI/GPT Generated,517,559
+../datasets/humanized_essays/Quillbot/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,64.63,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",209,278
+../datasets/humanized_essays/Quillbot/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,95.16,12.5,Most of Your Text is AI/GPT Generated,491,516
+../datasets/humanized_essays/Quillbot/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,87.01,12.5,Most of Your Text is AI/GPT Generated,511,543
+../datasets/humanized_essays/Quillbot/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,1009,1009
+../datasets/humanized_essays/Quillbot/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,97.97,50,"Your Text contains mixed signals, with some parts generated by AI/GPT",482,492
+../datasets/humanized_essays/Quillbot/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,54.8,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",190,278
+../datasets/humanized_essays/Quillbot/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,927,927
+../datasets/humanized_essays/Quillbot/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,99.22,0,Your Text is AI/GPT Generated,890,897
+../datasets/humanized_essays/Quillbot/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,90.28,0,Your Text is AI/GPT Generated,921,961
+../datasets/humanized_essays/Quillbot/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,45.99,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",538,896
+../datasets/humanized_essays/Quillbot/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,73.19,50,"Your Text contains mixed signals, with some parts generated by AI/GPT",192,214
+../datasets/humanized_essays/Quillbot/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,100,0,Your Text is AI/GPT Generated,1007,1007
+../datasets/humanized_essays/Quillbot/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,80.98,25,Your Text is Most Likely AI/GPT generated,883,1000
+../datasets/humanized_essays/Quillbot/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,35.46,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",446,976
+../datasets/humanized_essays/Quillbot/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,100.0,12.5,Most of Your Text is AI/GPT Generated,555,555
+../datasets/humanized_essays/Quillbot/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,261,261
+../datasets/humanized_essays/Quillbot/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,81.97,12.5,Most of Your Text is AI/GPT Generated,433,483
+../datasets/humanized_essays/Quillbot/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,238,238
+../datasets/humanized_essays/Quillbot/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,98.3,0,Your Text is AI/GPT Generated,523,532
+../datasets/humanized_essays/Quillbot/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,290,290
+../datasets/humanized_essays/Quillbot/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,79.74,50,"Your Text contains mixed signals, with some parts generated by AI/GPT",282,307
+../datasets/humanized_essays/Quillbot/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,73.97,50,"Your Text contains mixed signals, with some parts generated by AI/GPT",219,250
+../datasets/humanized_essays/Quillbot/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,47.43,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",355,599
+../datasets/humanized_essays/Quillbot/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,79.85,50,"Your Text contains mixed signals, with some parts generated by AI/GPT",741,902../datasets/humanized_essays/UndetectableAI/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,29.55,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",239,606
+../datasets/humanized_essays/UndetectableAI/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,6.25,100,Your Text is Human Written,50,502
+../datasets/humanized_essays/UndetectableAI/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,9.64,100,Your Text is Human Written,41,266
+../datasets/humanized_essays/UndetectableAI/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,27.67,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",339,789
+../datasets/humanized_essays/UndetectableAI/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,11.73,100,Your Text is Human Written,60,300
+../datasets/humanized_essays/UndetectableAI/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,41.01,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",322,570
+../datasets/humanized_essays/UndetectableAI/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,220
+../datasets/humanized_essays/UndetectableAI/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,29.18,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",223,484
+../datasets/humanized_essays/UndetectableAI/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,15.6,87.5,Your Text is Most Likely Human written,147,557
+../datasets/humanized_essays/UndetectableAI/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,9.2,100,Your Text is Human Written,154,991
+../datasets/humanized_essays/UndetectableAI/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,18.79,100,Your Text is Human Written,142,458
+../datasets/humanized_essays/UndetectableAI/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,274
+../datasets/humanized_essays/UndetectableAI/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,36.23,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",396,819
+../datasets/humanized_essays/UndetectableAI/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,18.33,100,Your Text is Human Written,253,910
+../datasets/humanized_essays/UndetectableAI/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,7.91,100,Your Text is Human Written,102,829
+../datasets/humanized_essays/UndetectableAI/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,7.39,100,Your Text is Human Written,114,907
+../datasets/humanized_essays/UndetectableAI/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,31.13,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",109,217
+../datasets/humanized_essays/UndetectableAI/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,36.01,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",496,996
+../datasets/humanized_essays/UndetectableAI/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,0.0,100,Your Text is Human Written,0,911
+../datasets/humanized_essays/UndetectableAI/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,958
+../datasets/humanized_essays/UndetectableAI/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,490
+../datasets/humanized_essays/UndetectableAI/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,24.83,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",101,253
+../datasets/humanized_essays/UndetectableAI/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,3.44,100,Your Text is Human Written,30,469
+../datasets/humanized_essays/UndetectableAI/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,0.0,100,Your Text is Human Written,0,231
+../datasets/humanized_essays/UndetectableAI/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,8.5,100,Your Text is Human Written,79,572
+../datasets/humanized_essays/UndetectableAI/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,20.13,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",66,252
+../datasets/humanized_essays/UndetectableAI/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,0.0,100,Your Text is Human Written,0,283
+../datasets/humanized_essays/UndetectableAI/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,27.28,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",82,227
+../datasets/humanized_essays/UndetectableAI/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,589
+../datasets/humanized_essays/UndetectableAI/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,828
+../datasets/humanized_essays/writehuman.ai/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,29.89,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",318,707
+../datasets/humanized_essays/writehuman.ai/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,23.88,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",154,484
+../datasets/humanized_essays/writehuman.ai/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,24.31,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",79,249
+../datasets/humanized_essays/writehuman.ai/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,26.71,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",359,877
+../datasets/humanized_essays/writehuman.ai/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,24.21,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",118,314
+../datasets/humanized_essays/writehuman.ai/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,24.9,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",236,626
+../datasets/humanized_essays/writehuman.ai/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,469
+../datasets/humanized_essays/writehuman.ai/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,27.6,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",263,523
+../datasets/humanized_essays/writehuman.ai/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,48.63,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",392,615
+../datasets/humanized_essays/writehuman.ai/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,40.46,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",607,1062
+../datasets/humanized_essays/writehuman.ai/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,0.0,100,Your Text is Human Written,0,22
+../datasets/humanized_essays/writehuman.ai/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,24.65,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",109,267
+../datasets/humanized_essays/writehuman.ai/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,40.41,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",456,913
+../datasets/humanized_essays/writehuman.ai/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,68.55,50,"Your Text contains mixed signals, with some parts generated by AI/GPT",756,906
+../datasets/humanized_essays/writehuman.ai/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,54.7,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",713,997
+../datasets/humanized_essays/writehuman.ai/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,24.5,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",322,917
+../datasets/humanized_essays/writehuman.ai/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,15.99,100,Your Text is Human Written,63,212
+../datasets/humanized_essays/writehuman.ai/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,42.44,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",574,1015
+../datasets/humanized_essays/writehuman.ai/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,30.71,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",398,915
+../datasets/humanized_essays/writehuman.ai/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,3.97,100,Your Text is Human Written,85,1105
+../datasets/humanized_essays/writehuman.ai/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,43.45,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",317,571
+../datasets/humanized_essays/writehuman.ai/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,54.91,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",234,297
+../datasets/humanized_essays/writehuman.ai/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,39.04,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",308,524
+../datasets/humanized_essays/writehuman.ai/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,35.44,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",121,261
+../datasets/humanized_essays/writehuman.ai/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,37.75,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",315,578
+../datasets/humanized_essays/writehuman.ai/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,94.58,0,Your Text is AI/GPT Generated,279,295
+../datasets/humanized_essays/writehuman.ai/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,0.0,100,Your Text is Human Written,0,232
+../datasets/humanized_essays/writehuman.ai/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,60.13,62.5,"Your Text is Likely Human written, may include parts generated by AI/GPT",177,246
+../datasets/humanized_essays/writehuman.ai/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,30.58,75.0,"Your Text is Most Likely Human written, may include parts generated by AI/GPT",236,594
+../datasets/humanized_essays/writehuman.ai/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,13.07,100,Your Text is Human Written,166,907
