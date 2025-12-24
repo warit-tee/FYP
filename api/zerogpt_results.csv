@@ -1,0 +1,31 @@
+filepath,filename,fakePercentage,isHuman,feedback,aiWords,textWords
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_2_GPT4.0.txt,TOPIC3_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,593,593
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_2_GPT4.0.txt,TOPIC4_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,450,450
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_1_GPT4.0.txt,TOPIC1_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,258,258
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_3_GEMINI2.5PRO.txt,TOPIC5_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,882,882
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_1_GEMINI2.5PRO.txt,TOPIC2_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,276,276
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_2_GEMINI2.5PRO.txt,TOPIC3_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,551,551
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_1_GEMINI2.5PRO.txt,TOPIC1_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,266,266
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_2_GPT4.0.txt,TOPIC5_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,524,524
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_2_GPT4.0.txt,TOPIC2_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,544,544
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_3_GPT4.0.txt,TOPIC1_3_GPT4.0.txt,99.99,0,Your Text is AI/GPT Generated,980,980
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_2_GEMINI2.5PRO.txt,TOPIC5_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,496,496
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_1_GEMINI2.5PRO.txt,TOPIC4_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,266,266
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_3_GEMINI2.5PRO.txt,TOPIC3_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,926,926
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_3_GPT4.0.txt,TOPIC5_3_GPT4.0.txt,99.22,0,Your Text is AI/GPT Generated,884,891
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_3_GPT4.0.txt,TOPIC2_3_GPT4.0.txt,98.61,0,Your Text is AI/GPT Generated,921,934
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_3_GEMINI2.5PRO.txt,TOPIC2_3_GEMINI2.5PRO.txt,99.99,0,Your Text is AI/GPT Generated,899,899
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_1_GEMINI2.5PRO.txt,TOPIC5_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,219,219
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_3_GPT4.0.txt,TOPIC3_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,998,998
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_3_GPT4.0.txt,TOPIC4_3_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,923,923
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_3_GEMINI2.5PRO.txt,TOPIC1_3_GEMINI2.5PRO.txt,72.06,12.5,Most of Your Text is AI/GPT Generated,763,988
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_2_GEMINI2.5PRO.txt,TOPIC4_2_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,549,549
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC5_1_GPT4.0.txt,TOPIC5_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,263,263
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_2_GEMINI2.5PRO.txt,TOPIC2_2_GEMINI2.5PRO.txt,96.16,0,Your Text is AI/GPT Generated,450,468
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC2_1_GPT4.0.txt,TOPIC2_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,229,229
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_2_GPT4.0.txt,TOPIC1_2_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,517,517
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_1_GPT4.0.txt,TOPIC3_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,281,281
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_1_GPT4.0.txt,TOPIC4_1_GPT4.0.txt,100.0,0,Your Text is AI/GPT Generated,287,287
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC3_1_GEMINI2.5PRO.txt,TOPIC3_1_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,251,251
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC1_2_GEMINI2.5PRO.txt,TOPIC1_2_GEMINI2.5PRO.txt,79.21,12.5,Most of Your Text is AI/GPT Generated,476,578
+/Users/elizalesmana/Documents/GitHub/FYP/api/../datasets/essays/TOPIC4_3_GEMINI2.5PRO.txt,TOPIC4_3_GEMINI2.5PRO.txt,100.0,0,Your Text is AI/GPT Generated,893,893
