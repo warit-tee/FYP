@@ -2,7 +2,10 @@ import requests
 import os
 import csv
 import json
+from dotenv import load_dotenv
+load_dotenv()
 
+SAPLING_API_KEY = os.getenv('SAPLING_API_KEY1')
 # Define directories
 current_dir = os.path.dirname(__file__)
 essays_dir = os.path.join(current_dir, '..', 'datasets', 'essays')
@@ -66,7 +69,7 @@ with open(output_csv_path, mode='a', newline='', encoding='utf-8') as csv_file:
             response = requests.post(
                 "https://api.sapling.ai/api/v1/aidetect",
                 json={
-                    "key": "DUWZB94AX7O4C69YNSP1IHKXI8LWR8I7",
+                    "key": SAPLING_API_KEY,
                     "text": file_content
                 }
             )
