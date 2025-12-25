@@ -146,8 +146,17 @@ Quillbot
 100,55
 100,58
 
-
 UndetectableAI
-
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
 
 writehuman.ai
