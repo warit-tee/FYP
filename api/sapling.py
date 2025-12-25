@@ -5,39 +5,15 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
-SAPLING_API_KEY = os.getenv('SAPLING_API_KEY1')
+SAPLING_API_KEY = os.getenv('SAPLING_API_KEY5')
 # Define directories
 current_dir = os.path.dirname(__file__)
-essays_dir = os.path.join(current_dir, '..', 'datasets', 'essays')
+essays_dir = os.path.join(current_dir, '..', 'datasets', 'humanized_essays', 'Quillbot')
 output_csv_path = os.path.join(current_dir, 'sapling_results.csv')
 
 print(f"Reading files from: {essays_dir}")
 
-done =[
-"TOPIC3_2_GPT4.0.txt",
-"TOPIC4_2_GPT4.0.txt",
-"TOPIC1_1_GPT4.0.txt",
-"TOPIC5_3_GEMINI2.5PRO.txt",
-"TOPIC2_1_GEMINI2.5PRO.txt",
-"TOPIC3_2_GEMINI2.5PRO.txt",
-"TOPIC1_1_GEMINI2.5PRO.txt",
-"TOPIC5_2_GPT4.0.txt",
-"TOPIC2_2_GPT4.0.txt",
-"TOPIC1_3_GPT4.0.txt",
-"TOPIC5_2_GEMINI2.5PRO.txt",
-"TOPIC4_1_GEMINI2.5PRO.txt",
-"TOPIC3_3_GEMINI2.5PRO.txt",
-"TOPIC5_3_GPT4.0.txt",
-"TOPIC2_3_GPT4.0.txt",
-"TOPIC2_3_GEMINI2.5PRO.txt",
-"TOPIC5_1_GEMINI2.5PRO.txt",
-"TOPIC3_3_GPT4.0.txt",
-"TOPIC4_3_GPT4.0.txt",
-"TOPIC1_3_GEMINI2.5PRO.txt",
-"TOPIC4_2_GEMINI2.5PRO.txt",
-"TOPIC5_1_GPT4.0.txt",
-"TOPIC2_2_GEMINI2.5PRO.txt",
-"TOPIC2_1_GPT4.0.txt"
+done = [
 ]
 
 # Check if file exists
@@ -60,10 +36,11 @@ with open(output_csv_path, mode='a', newline='', encoding='utf-8') as csv_file:
             print(f"Skipping already processed file: {filename}")
             continue
 
-        file_path = os.path.join(essays_dir, filename)
+        filepath = os.path.join(essays_dir, filename)
+        relative_path = os.path.relpath(filepath, start=current_dir)
 
         try:
-            with open(file_path, 'r', encoding='utf-8') as file:
+            with open(filepath, 'r', encoding='utf-8') as file:
                 file_content = file.read()
 
             response = requests.post(
@@ -80,7 +57,7 @@ with open(output_csv_path, mode='a', newline='', encoding='utf-8') as csv_file:
                 # Extract fields. We use json.dumps for lists to store them in a single CSV cell
                 # Note: API usually returns 'sentence_scores' (plural) and 'tokens' (plural)
                 row = [
-                    file_path,
+                    relative_path,
                     filename,
                     data.get('score'),
                     json.dumps(data.get('sentence_scores')), 
@@ -89,6 +66,7 @@ with open(output_csv_path, mode='a', newline='', encoding='utf-8') as csv_file:
                 ]
                 writer.writerow(row)
                 print(f"Successfully processed: {filename}")
+                done.append(filename)
             else:
                 print(f"Failed API request for: {filename}")
                 print('Error: ', response.status_code, response.text)
@@ -96,5 +74,8 @@ with open(output_csv_path, mode='a', newline='', encoding='utf-8') as csv_file:
         except Exception as e:
             print(f"Failed processing file: {filename}")
             print(f"Error details: {e}")
-
+            
+print(f"Completed files: ")
+for d in done:
+    print(d, end = ',\n')
 print(f"Processing complete. Results saved to {output_csv_path}")
