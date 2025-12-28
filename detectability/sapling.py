@@ -5,10 +5,10 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
-SAPLING_API_KEY = os.getenv('SAPLING_API_KEY8')
+SAPLING_API_KEY = os.getenv('SAPLING_API_KEY5')
 # Define directories
 current_dir = os.path.dirname(__file__)
-essays_dir = os.path.join(current_dir, '..', 'datasets', 'humanized_essays', 'Quillbot')
+essays_dir = os.path.join(current_dir, '..', 'datasets', 'humanized_essays', 'writehuman.ai')
 output_csv_path = os.path.join(current_dir, 'sapling_results.csv')
 
 print(f"Reading files from: {essays_dir}")
@@ -23,27 +23,18 @@ done = [
 "TOPIC1_1_GEMINI2.5PRO.txt",
 "TOPIC5_2_GPT4.0.txt",
 "TOPIC2_2_GPT4.0.txt",
-"TOPIC1_3_GPT4.0.txt",
 "TOPIC5_2_GEMINI2.5PRO.txt",
 "TOPIC4_1_GEMINI2.5PRO.txt",
+"TOPIC5_1_GEMINI2.5PRO.txt",
+"TOPIC5_1_GPT4.0.txt",
+"TOPIC1_3_GPT4.0.txt",
 "TOPIC3_3_GEMINI2.5PRO.txt",
 "TOPIC5_3_GPT4.0.txt",
 "TOPIC2_3_GPT4.0.txt",
 "TOPIC2_3_GEMINI2.5PRO.txt",
-"TOPIC5_1_GEMINI2.5PRO.txt",
 "TOPIC3_3_GPT4.0.txt",
 "TOPIC4_3_GPT4.0.txt",
 "TOPIC1_3_GEMINI2.5PRO.txt",
-"TOPIC4_2_GEMINI2.5PRO.txt",
-"TOPIC5_1_GPT4.0.txt",
-"TOPIC2_2_GEMINI2.5PRO.txt",
-"TOPIC2_1_GPT4.0.txt",
-"TOPIC1_2_GPT4.0.txt",
-"TOPIC3_1_GPT4.0.txt",
-"TOPIC4_1_GPT4.0.txt",
-"TOPIC3_1_GEMINI2.5PRO.txt",
-"TOPIC1_2_GEMINI2.5PRO.txt",
-"TOPIC4_3_GEMINI2.5PRO.txt",
 ]
 
 # Check if file exists
