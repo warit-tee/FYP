@@ -1,2 +1,7 @@
 .env
 .cache/
+**/Meta-Llama-3.1-8B/
+data.zip
+.db
+factual/LICENSE.txt
+factual/README.md
