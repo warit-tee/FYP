@@ -3,6 +3,7 @@ import os
 
 import pandas as pd
 import torch
+import warnings
 from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import (
@@ -12,6 +13,9 @@ from transformers import (
     XLMRobertaTokenizerFast,
     XLMRobertaForSequenceClassification,
 )
+
+from openai import AzureOpenAI  # optional dependency
+
 
 # ── SBERT ─────────────────────────────────────────────────────────────────────
 
@@ -153,7 +157,6 @@ def get_tfidf_vectorizer() -> TfidfVectorizer | None:
     try:
         df = pd.read_csv(corpus_path, engine="python", on_bad_lines="skip")
     except FileNotFoundError:
-        import warnings
         warnings.warn(
             f"TF-IDF corpus not found at {corpus_path}. "
             "Falling back to per-query vectorizer fitting.",
@@ -187,3 +190,63 @@ def get_tfidf_vectorizer() -> TfidfVectorizer | None:
     vec.fit(corpus_docs)
     _tfidf_vectorizer = vec
     return _tfidf_vectorizer
+
+
+# ── Azure OpenAI client (for factual consistency service) ─────────────────────
+
+_openai_client = None
+
+
+def get_openai_client():
+    """
+    Returns a lazy-loaded AzureOpenAI client configured from environment
+    variables:
+
+      OPENAI_API_KEY          – Azure OpenAI API key
+      OPENAI_API_ENDPOINT     – Azure OpenAI endpoint URL
+      OPENAI_API_VERSION      – API version string (e.g. "2024-12-01-preview")
+
+    Returns None (with a warning) if any required variable is missing, so
+    callers can gracefully degrade instead of crashing.
+    """
+    global _openai_client
+
+    if _openai_client is not None:
+        return _openai_client
+
+    api_key      = os.getenv("OPENAI_API_KEY")
+    api_endpoint = os.getenv("OPENAI_API_ENDPOINT")
+    api_version  = os.getenv("OPENAI_API_VERSION", "2024-12-01-preview")
+
+    if not api_key or not api_endpoint:
+        warnings.warn(
+            "OPENAI_API_KEY or OPENAI_API_ENDPOINT not set. "
+            "Factual consistency analysis will be unavailable.",
+            RuntimeWarning,
+            stacklevel=2,
+        )
+        return None
+
+    try:
+        _openai_client = AzureOpenAI(
+            api_key=api_key,
+            azure_endpoint=api_endpoint,
+            api_version=api_version,
+        )
+    except Exception as exc:
+        warnings.warn(
+            f"Failed to initialise AzureOpenAI client: {exc}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
+        return None
+
+    return _openai_client
+
+
+def get_openai_deployment() -> str:
+    """
+    Returns the Azure OpenAI deployment name from the environment variable
+    OPENAI_DEPLOYMENT_NAME (defaults to "gpt-4o-mini").
+    """
+    return os.getenv("OPENAI_DEPLOYMENT_NAME", "gpt-4o-mini")

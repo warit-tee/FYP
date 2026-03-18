@@ -3,6 +3,8 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 
 from models.essay import Essay
+from services import factual as factual_svc
+from services import tone
 
 load_dotenv()
 
@@ -105,13 +107,14 @@ def emotions():
         "humanized": human_essay.get_emotions(),
     })
 
+
 @app.route("/tone", methods=["POST"])
-def tone():
+def tone_route():
     """
     Formality scores for each essay and the delta (humanized − AI).
- 
+
     Body:  { "ai_text": "...", "humanized_text": "..." }
- 
+
     Response:
     {
         "ai": {
@@ -128,9 +131,9 @@ def tone():
         ai_essay, human_essay = parse_essays(request.get_json(force=True))
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
- 
+
     result = tone.compare(ai_essay.text, human_essay.text)
- 
+
     return jsonify({
         "ai":              result["text1"],
         "humanized":       result["text2"],
@@ -138,13 +141,67 @@ def tone():
     })
 
 
+@app.route("/factual", methods=["POST"])
+def factual():
+    """
+    Factual consistency scores using an LLM-based QG → QA → Eval pipeline.
+
+    Runs in BOTH directions (forward & reversed) mirroring the methodology
+    in fact.ipynb.
+
+    Body:
+    {
+        "ai_text":        "...",
+        "humanized_text": "...",
+        "num_questions":  10       # optional, default 10
+    }
+
+    Response:
+    {
+        "forward": {
+            "score":   float,      # questions from ai_text, answered by humanized_text
+            "details": [
+                {
+                    "question":          str,
+                    "ground_truth":      str,
+                    "candidate_answer":  str,
+                    "is_consistent":     bool,
+                    "reason":            str
+                },
+                ...
+            ]
+        },
+        "reversed": {
+            "score":   float,      # questions from humanized_text, answered by ai_text
+            "details": [ ... ]
+        }
+    }
+    """
+    try:
+        ai_essay, human_essay = parse_essays(request.get_json(force=True))
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    body = request.get_json(force=True) or {}
+    num_questions = int(body.get("num_questions", 10))
+
+    result = factual_svc.compare(
+        ai_text=ai_essay.text,
+        humanized_text=human_essay.text,
+        num_questions=num_questions,
+    )
+
+    return jsonify(result)
+
+
 @app.route("/full-analysis", methods=["POST"])
 def full_analysis():
     """
-    Runs all analyses (comparison, detectability, emotions, tone) in one request.
- 
-    Body:  { "ai_text": "...", "humanized_text": "..." }
- 
+    Runs all analyses (comparison, detectability, emotions, tone, factual)
+    in one request.
+
+    Body:  { "ai_text": "...", "humanized_text": "...", "num_questions": 10 }
+
     Response:
     {
         "comparison":  { "similarity": {...}, "difference": {...} },
@@ -152,6 +209,10 @@ def full_analysis():
             "ai":              { "formal", "informal", "sentence_count", "sentence_scores" },
             "humanized":       { ... },
             "delta_formality": float
+        },
+        "factual": {
+            "forward":  { "score": float, "details": [...] },
+            "reversed": { "score": float, "details": [...] }
         },
         "ai":        { "label": "ai",        "detectability": {...}, "emotions": [...] },
         "humanized": { "label": "humanized", "detectability": {...}, "emotions": [...] }
@@ -161,9 +222,18 @@ def full_analysis():
         ai_essay, human_essay = parse_essays(request.get_json(force=True))
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
- 
+
+    body = request.get_json(force=True) or {}
+    num_questions = int(body.get("num_questions", 10))
+
     tone_result = tone.compare(ai_essay.text, human_essay.text)
- 
+
+    factual_result = factual_svc.compare(
+        ai_text=ai_essay.text,
+        humanized_text=human_essay.text,
+        num_questions=num_questions,
+    )
+
     return jsonify({
         "comparison": ai_essay.compare(human_essay),
         "tone": {
@@ -171,6 +241,7 @@ def full_analysis():
             "humanized":       tone_result["text2"],
             "delta_formality": tone_result["delta_formality"],
         },
+        "factual": factual_result,
         "ai":       ai_essay.to_dict(),
         "humanized": human_essay.to_dict(),
     })
