@@ -1,0 +1,13 @@
+flask
+flask-cors
+python-dotenv
+requests
+sentence-transformers
+transformers
+torch
+accelerate
+scikit-learn
+pandas
+numpy
+nltk
+selenium

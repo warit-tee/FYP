@@ -1,23 +1,124 @@
 import os
+import re
+
 import numpy as np
-import requests
+import pandas as pd
+import torch
+import torch.nn.functional as F
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from utils.model_cache import get_sbert
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
 
+from utils.model_cache import get_sbert, get_nemotron_model
+
+# ── One-time NLTK downloads ─────────────────────────────────────────────────
+for _pkg in ("punkt", "punkt_tab", "stopwords"):
+    try:
+        nltk.download(_pkg, quiet=True)
+    except Exception:
+        pass
+
+
+# ── Preprocessing (mirrors TF-IDF.ipynb) ────────────────────────────────────
+
+_STOPWORDS = set(stopwords.words("english"))
+_STEMMER   = PorterStemmer()
+
+
+def _preprocess(text: str) -> str:
+    """
+    Apply the same pipeline used in TF-IDF.ipynb:
+      lowercase → remove punctuation → strip → tokenize
+      → remove stopwords → stem → join with spaces
+    Returns a single string ready for TfidfVectorizer.
+    """
+    # 1. Lowercase
+    text = text.lower()
+    # 2. Remove punctuation (keep word chars and spaces)
+    text = re.sub(r"[^\w\s]", "", text)
+    # 3. Strip
+    text = text.strip()
+    # 4. Tokenise
+    tokens = word_tokenize(text)
+    # 5. Remove stopwords
+    tokens = [t for t in tokens if t not in _STOPWORDS]
+    # 6. Stem
+    tokens = [_STEMMER.stem(t) for t in tokens]
+    return " ".join(tokens)
+
+
+# ── TF-IDF similarity ────────────────────────────────────────────────────────
 
 def tfidf_similarity(text1: str, text2: str) -> float:
-    vec = TfidfVectorizer()
-    tfidf = vec.fit_transform([text1, text2])
-    return float(cosine_similarity(tfidf[0], tfidf[1])[0][0])
+    """
+    Pre-process both texts exactly as in TF-IDF.ipynb (unigrams, ngram=(1,1)),
+    then compute cosine similarity between their TF-IDF vectors.
 
+    The vectorizer is fit on BOTH texts together so that the vocabulary is
+    consistent (same approach as the notebook's fit_transform over the corpus).
+    """
+    p1 = _preprocess(text1)
+    p2 = _preprocess(text2)
+
+    vec     = TfidfVectorizer(ngram_range=(1, 1))
+    tfidf   = vec.fit_transform([p1, p2])
+    sim     = cosine_similarity(tfidf[0], tfidf[1])[0][0]
+    return float(sim)
+
+
+# ── SBERT similarity ─────────────────────────────────────────────────────────
 
 def sbert_similarity(text1: str, text2: str) -> float:
-    model = get_sbert()
-    emb1, emb2 = model.encode([text1, text2])
-    sim = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
+    model       = get_sbert()
+    emb1, emb2  = model.encode([text1, text2])
+    sim         = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
     return float(sim)
+
+
+# ── Nemotron (local HuggingFace, mirrors llama_nemotron_8b.ipynb) ────────────
+
+_STS_INSTRUCTION = "Retrieve semantically similar text."
+
+
+def _get_nemotron_embedding(text: str) -> np.ndarray:
+    """
+    Compute a single embedding using the local Nemotron model.
+    Follows the exact procedure in llama_nemotron_8b.ipynb:
+      - Prepend instruction
+      - Tokenise with left-padding, max_length=8192
+      - Mean-pool over non-padded tokens
+      - L2-normalise
+    """
+    tokenizer, model = get_nemotron_model()
+    device = next(model.parameters()).device
+
+    input_text = f"Instruct: {_STS_INSTRUCTION}\nQuery: {text}"
+
+    inputs = tokenizer(
+        input_text,
+        max_length=8192,
+        padding=True,
+        truncation=True,
+        return_tensors="pt",
+    ).to(device)
+
+    with torch.no_grad():
+        output = model(**inputs)
+
+    token_embeddings = output.last_hidden_state          # (1, seq_len, hidden)
+    attention_mask   = inputs["attention_mask"]          # (1, seq_len)
+
+    mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
+    sum_emb  = torch.sum(token_embeddings * mask_expanded, dim=1)
+    sum_mask = torch.clamp(mask_expanded.sum(dim=1), min=1e-9)
+    mean_emb = sum_emb / sum_mask                        # (1, hidden)
+
+    normalised = F.normalize(mean_emb, p=2, dim=1)      # L2 norm
+    return normalised[0].cpu().numpy()
 
 
 def nemotron_similarity(text1: str, text2: str) -> tuple[float | None, str | None]:
@@ -25,42 +126,21 @@ def nemotron_similarity(text1: str, text2: str) -> tuple[float | None, str | Non
     Returns (similarity_score, error_message).
     error_message is None on success; score is None on failure.
     """
-    api_key = os.getenv("NVIDIA_API_KEY") or os.getenv("NEMOTRON_API_KEY")
-    if not api_key:
-        return None, "NVIDIA_API_KEY not set in environment"
-
-    base_url = os.getenv("NEMOTRON_BASE_URL", "https://integrate.api.nvidia.com/v1")
-
-    def get_embedding(text: str) -> np.ndarray:
-        resp = requests.post(
-            f"{base_url}/embeddings",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": "nvidia/llama-3.1-nemotron-8b-instruct",
-                "input": text,
-                "encoding_format": "float",
-            },
-            timeout=30,
-        )
-        resp.raise_for_status()
-        return np.array(resp.json()["data"][0]["embedding"])
-
     try:
-        emb1 = get_embedding(text1)
-        emb2 = get_embedding(text2)
-        sim = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
+        emb1 = _get_nemotron_embedding(text1)
+        emb2 = _get_nemotron_embedding(text2)
+        sim  = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
         return float(sim), None
     except Exception as exc:
         return None, str(exc)
 
 
+# ── Combined entry point ─────────────────────────────────────────────────────
+
 def all_methods(text1: str, text2: str) -> dict:
-    tfidf = tfidf_similarity(text1, text2)
-    sbert = sbert_similarity(text1, text2)
-    nem, nem_err = nemotron_similarity(text1, text2)
+    tfidf          = tfidf_similarity(text1, text2)
+    sbert          = sbert_similarity(text1, text2)
+    nem, nem_err   = nemotron_similarity(text1, text2)
 
     result = {
         "similarity": {
@@ -71,7 +151,7 @@ def all_methods(text1: str, text2: str) -> dict:
         "difference": {
             "tfidf":    round(1 - tfidf, 6),
             "sbert":    round(1 - sbert, 6),
-            "nemotron": round(1 - nem, 6) if nem is not None else None,
+            "nemotron": round(1 - nem,   6) if nem is not None else None,
         },
     }
     if nem_err:
