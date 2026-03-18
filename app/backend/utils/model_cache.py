@@ -1,7 +1,7 @@
 import os
 import torch
 from sentence_transformers import SentenceTransformer
-from transformers import pipeline, AutoTokenizer, AutoModel
+from transformers import pipeline, AutoTokenizer, AutoModel, XLMRobertaTokenizerFast, XLMRobertaForSequenceClassification
 
 # ── SBERT ─────────────────────────────────────────────────────────────────────
 
@@ -78,3 +78,36 @@ def get_nemotron_model():
             raise RuntimeError(f"Failed to load Nemotron model: {exc}") from exc
 
     return _nemotron_tokenizer, _nemotron_model
+
+# ── Tone ─────────────────────────────────
+_FORMALITY_MODEL_NAME = "s-nlp/xlmr_formality_classifier"
+ 
+_formality_tokenizer = None
+_formality_model     = None
+_id2formality        = {0: "formal", 1: "informal"}
+ 
+ 
+def get_formality_model():
+    """
+    Returns (tokenizer, model, id2formality) for the XLM-RoBERTa formality
+    classifier.  Model is lazy-loaded and cached on first call.
+ 
+    Raises RuntimeError if loading fails.
+    """
+    global _formality_tokenizer, _formality_model
+ 
+    if _formality_tokenizer is None or _formality_model is None:
+        try:
+            _formality_tokenizer = XLMRobertaTokenizerFast.from_pretrained(
+                _FORMALITY_MODEL_NAME
+            )
+            _formality_model = XLMRobertaForSequenceClassification.from_pretrained(
+                _FORMALITY_MODEL_NAME
+            )
+            _formality_model.eval()
+        except Exception as exc:
+            _formality_tokenizer = None
+            _formality_model     = None
+            raise RuntimeError(f"Failed to load formality model: {exc}") from exc
+ 
+    return _formality_tokenizer, _formality_model, _id2formality
