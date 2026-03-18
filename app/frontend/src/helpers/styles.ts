@@ -9,7 +9,6 @@ export const FONTS = [
 ]
 
 // Header styles
-
 export const headerStyle = {
   position: 'fixed' as const,
   top: 0,
@@ -91,7 +90,8 @@ export const homeButtonStyle = {
   minWidth: '200px',
   fontSize: '15px',
   fontFamily: "'Open Sans', sans-serif",
-  cursor: 'pointer'
+  cursor: 'pointer',
+  transition: 'transform 0.2s ease-in-out, background-color 0.2s ease'
 }
 
 export const homeRightStyle = {
@@ -107,21 +107,22 @@ export const homeRobotStyle = {
   height: 'auto'
 }
 
+// TODO: Make these styles more modular and reusable across the app, overview Card Styles overall
+
 // Essay Input styles
 export const essayInputSectionStyle = {
   width: '100%',
   minHeight: 'calc(100vh - 84px)', 
   backgroundColor: GREY,
-  padding: '3rem 2rem',
   display: 'flex' as const,
   justifyContent: 'center' as const,
-  alignItems: 'flex-start' as const,
-  marginTop: '84px' // Header height
+  alignItems: 'center' as const,
+  marginTop: '80px' 
 }
 
 export const essayInputCardStyle = {
   width: '100%',
-  maxWidth: '1200px',
+  margin: '50px',
   backgroundColor: WHITE,
   borderRadius: '16px',
   padding: '2rem 2.5rem',
@@ -129,11 +130,14 @@ export const essayInputCardStyle = {
 }
 
 export const essayInputTitleStyle = {
-  margin: '0 0 2rem 0',
+  margin: '0 0 3rem 0',
   color: BLACK,
-  fontSize: '24px',
-  fontWeight: 600,
-  textAlign: 'center' as const
+  fontSize: '30px',
+  marginBottom: '2.5rem',
+  fontWeight: 700,
+  textAlign: 'left' as const,
+  paddingBottom: '0.5rem',
+  borderBottom: `2px solid ${GREY}`,
 }
 
 export const essayInputRowStyle = {
@@ -158,10 +162,10 @@ export const essayLabelStyle = {
 }
 
 export const essayPasteButtonStyle = {
-  backgroundColor: 'transparent',
   color: PRIMARY,
-  border: 'none',
-  borderRadius: '6px',
+  border: `1px solid ${GREY}`,
+  backgroundColor: 'transparent',
+  borderRadius: '10px',
   padding: '4px 8px',
   cursor: 'pointer',
   fontWeight: 600,
@@ -170,7 +174,7 @@ export const essayPasteButtonStyle = {
 
 export const essayTextareaStyle = {
   flex: 1,
-  minHeight: '400px',
+  minHeight: '300px',
   border: `1px solid #E0E0E0`,
   backgroundColor: '#FCFCFC',
   borderRadius: '8px',
@@ -185,8 +189,6 @@ export const essayInputFooterStyle = {
   display: 'flex' as const,
   justifyContent: 'flex-end' as const,
   marginTop: '2rem',
-  paddingTop: '1.5rem',
-  borderTop: `1px solid ${GREY}`
 }
 
 export const essayAnalyzeButtonStyle = {
@@ -198,5 +200,36 @@ export const essayAnalyzeButtonStyle = {
   fontSize: '16px',
   fontWeight: 600,
   cursor: 'pointer',
-  transition: 'opacity 0.2s'
+  transition: 'opacity 0.2s',
+  fontFamily: "'Open Sans', sans-serif",
+}
+
+// Result styles
+export const pageStyle: React.CSSProperties = {
+  padding: '2rem',
+  marginTop: '80px', 
+  backgroundColor: GREY,
+  minHeight: 'calc(100vh - 84px)',
+}
+
+
+export const cardStyle: React.CSSProperties = {
+  backgroundColor: WHITE,
+  padding: '1.5rem 2rem',
+  borderRadius: '16px',
+  boxShadow: `0 4px 20px ${GREY}`,
+  border: `1px solid ${GREY}`,
+}
+
+export const errorStyle: React.CSSProperties = {
+  textAlign: 'center',
+  color: BLACK
+}
+
+export const titleStyle: React.CSSProperties = {
+  color: BLACK,
+  borderBottom: `1px solid ${GREY}`,
+  paddingBottom: '1rem',
+  marginBottom: '1.5rem',
+  fontSize: '1.5rem'
 }
