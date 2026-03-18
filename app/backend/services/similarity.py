@@ -1,8 +1,6 @@
-import os
 import re
 
 import numpy as np
-import pandas as pd
 import torch
 import torch.nn.functional as F
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -13,7 +11,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 
-from utils.model_cache import get_sbert, get_nemotron_model
+from utils.model_cache import get_sbert, get_nemotron_model, get_tfidf_vectorizer
 
 # ── One-time NLTK downloads ─────────────────────────────────────────────────
 for _pkg in ("punkt", "punkt_tab", "stopwords"):
@@ -36,17 +34,11 @@ def _preprocess(text: str) -> str:
       → remove stopwords → stem → join with spaces
     Returns a single string ready for TfidfVectorizer.
     """
-    # 1. Lowercase
-    text = text.lower()
-    # 2. Remove punctuation (keep word chars and spaces)
-    text = re.sub(r"[^\w\s]", "", text)
-    # 3. Strip
-    text = text.strip()
-    # 4. Tokenise
+    text   = text.lower()
+    text   = re.sub(r"[^\w\s]", "", text)
+    text   = text.strip()
     tokens = word_tokenize(text)
-    # 5. Remove stopwords
     tokens = [t for t in tokens if t not in _STOPWORDS]
-    # 6. Stem
     tokens = [_STEMMER.stem(t) for t in tokens]
     return " ".join(tokens)
 
@@ -55,27 +47,36 @@ def _preprocess(text: str) -> str:
 
 def tfidf_similarity(text1: str, text2: str) -> float:
     """
-    Pre-process both texts exactly as in TF-IDF.ipynb (unigrams, ngram=(1,1)),
-    then compute cosine similarity between their TF-IDF vectors.
+    Pre-process both texts exactly as in TF-IDF.ipynb, then compute cosine
+    similarity between their TF-IDF vectors.
 
-    The vectorizer is fit on BOTH texts together so that the vocabulary is
-    consistent (same approach as the notebook's fit_transform over the corpus).
+    IDF weights are derived from the preprocessed corpus (fitted once at
+    startup). If the corpus CSV is unavailable, the vectorizer falls back to
+    fitting on the two input texts only (original behaviour).
     """
     p1 = _preprocess(text1)
     p2 = _preprocess(text2)
 
-    vec     = TfidfVectorizer(ngram_range=(1, 1))
-    tfidf   = vec.fit_transform([p1, p2])
-    sim     = cosine_similarity(tfidf[0], tfidf[1])[0][0]
+    vec = get_tfidf_vectorizer()
+
+    if vec is None:
+        # Corpus not available — fit on the pair (fallback)
+        vec = TfidfVectorizer(ngram_range=(1, 1))
+        tfidf = vec.fit_transform([p1, p2])
+    else:
+        # Transform using corpus-derived IDF weights
+        tfidf = vec.transform([p1, p2])
+
+    sim = cosine_similarity(tfidf[0], tfidf[1])[0][0]
     return float(sim)
 
 
 # ── SBERT similarity ─────────────────────────────────────────────────────────
 
 def sbert_similarity(text1: str, text2: str) -> float:
-    model       = get_sbert()
-    emb1, emb2  = model.encode([text1, text2])
-    sim         = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
+    model      = get_sbert()
+    emb1, emb2 = model.encode([text1, text2])
+    sim        = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
     return float(sim)
 
 
@@ -138,9 +139,9 @@ def nemotron_similarity(text1: str, text2: str) -> tuple[float | None, str | Non
 # ── Combined entry point ─────────────────────────────────────────────────────
 
 def all_methods(text1: str, text2: str) -> dict:
-    tfidf          = tfidf_similarity(text1, text2)
-    sbert          = sbert_similarity(text1, text2)
-    nem, nem_err   = nemotron_similarity(text1, text2)
+    tfidf        = tfidf_similarity(text1, text2)
+    sbert        = sbert_similarity(text1, text2)
+    nem, nem_err = nemotron_similarity(text1, text2)
 
     result = {
         "similarity": {
