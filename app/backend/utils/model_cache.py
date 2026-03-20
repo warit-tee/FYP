@@ -8,13 +8,14 @@ from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import (
     pipeline,
-    AutoTokenizer,
-    AutoModel,
+    # AutoTokenizer,
+    # AutoModel,
     XLMRobertaTokenizerFast,
     XLMRobertaForSequenceClassification,
 )
 
 from openai import AzureOpenAI  # optional dependency
+from dotenv import load_dotenv
 
 
 # ── SBERT ─────────────────────────────────────────────────────────────────────
@@ -45,50 +46,50 @@ def get_emotion_pipeline():
     return _emotion_pipeline
 
 
-# ── Nemotron (nvidia/llama-embed-nemotron-8b) ─────────────────────────────────
-
-_NEMOTRON_MODEL_NAME = "nvidia/llama-embed-nemotron-8b"
-
-_nemotron_tokenizer = None
-_nemotron_model     = None
-
-
-def get_nemotron_model():
-    """
-    Returns (tokenizer, model) for nvidia/llama-embed-nemotron-8b.
-
-    Loading strategy (mirrors llama_nemotron_8b.ipynb):
-      - padding_side = "left"  (required by the model)
-      - dtype = torch.float32
-      - Move to CUDA if available, else CPU
-      - Set eval() mode
-
-    Raises RuntimeError if the model cannot be loaded (e.g. not enough VRAM/RAM).
-    """
-    global _nemotron_tokenizer, _nemotron_model
-
-    if _nemotron_tokenizer is None or _nemotron_model is None:
-        try:
-            _nemotron_tokenizer = AutoTokenizer.from_pretrained(
-                _NEMOTRON_MODEL_NAME,
-                trust_remote_code=True,
-                padding_side="left",
-            )
-            _nemotron_model = AutoModel.from_pretrained(
-                _NEMOTRON_MODEL_NAME,
-                trust_remote_code=True,
-                dtype=torch.float32,
-            )
-            device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-            _nemotron_model.to(device)
-            _nemotron_model.eval()
-
-        except Exception as exc:
-            _nemotron_tokenizer = None
-            _nemotron_model     = None
-            raise RuntimeError(f"Failed to load Nemotron model: {exc}") from exc
-
-    return _nemotron_tokenizer, _nemotron_model
+# # ── Nemotron (nvidia/llama-embed-nemotron-8b) ───────────────────────────────
+#
+# _NEMOTRON_MODEL_NAME = "nvidia/llama-embed-nemotron-8b"
+#
+# _nemotron_tokenizer = None
+# _nemotron_model     = None
+#
+#
+# def get_nemotron_model():
+#     """
+#     Returns (tokenizer, model) for nvidia/llama-embed-nemotron-8b.
+#
+#     Loading strategy (mirrors llama_nemotron_8b.ipynb):
+#       - padding_side = "left"  (required by the model)
+#       - dtype = torch.float32
+#       - Move to CUDA if available, else CPU
+#       - Set eval() mode
+#
+#     Raises RuntimeError if the model cannot be loaded (e.g. not enough VRAM/RAM).
+#     """
+#     global _nemotron_tokenizer, _nemotron_model
+#
+#     if _nemotron_tokenizer is None or _nemotron_model is None:
+#         try:
+#             _nemotron_tokenizer = AutoTokenizer.from_pretrained(
+#                 _NEMOTRON_MODEL_NAME,
+#                 trust_remote_code=True,
+#                 padding_side="left",
+#             )
+#             _nemotron_model = AutoModel.from_pretrained(
+#                 _NEMOTRON_MODEL_NAME,
+#                 trust_remote_code=True,
+#                 dtype=torch.float32,
+#             )
+#             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+#             _nemotron_model.to(device)
+#             _nemotron_model.eval()
+#
+#         except Exception as exc:
+#             _nemotron_tokenizer = None
+#             _nemotron_model     = None
+#             raise RuntimeError(f"Failed to load Nemotron model: {exc}") from exc
+#
+#     return _nemotron_tokenizer, _nemotron_model
 
 
 # ── Formality classifier ──────────────────────────────────────────────────────
@@ -209,6 +210,7 @@ def get_openai_client():
     Returns None (with a warning) if any required variable is missing, so
     callers can gracefully degrade instead of crashing.
     """
+    load_dotenv()
     global _openai_client
 
     if _openai_client is not None:

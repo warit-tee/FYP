@@ -48,8 +48,10 @@ def compare():
 
     Response:
     {
-        "similarity": { "tfidf": 0.87, "sbert": 0.92, "nemotron": 0.88 },
-        "difference": { "tfidf": 0.13, "sbert": 0.08, "nemotron": 0.12 }
+        "similarity": { "tfidf": 0.87, "sbert": 0.92 },
+        "difference": { "tfidf": 0.13, "sbert": 0.08 }
+        # "similarity": { "tfidf": 0.87, "sbert": 0.92, "nemotron": 0.88 },
+        # "difference": { "tfidf": 0.13, "sbert": 0.08, "nemotron": 0.12 }
     }
     """
     try:
