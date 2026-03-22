@@ -252,4 +252,4 @@ def get_openai_deployment() -> str:
     Returns the Azure OpenAI deployment name from the environment variable
     OPENAI_DEPLOYMENT_NAME (defaults to "gpt-4o-mini").
     """
-    return os.getenv("OPENAI_DEPLOYMENT_NAME", "gpt-4o-mini")
+    return os.getenv("OPENAI_DEPLOYMENT_NAME", "gpt-5-mini")
