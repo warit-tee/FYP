@@ -16,7 +16,6 @@ import {
 function EssayInputCard() {
   const [aiEssay, setAiEssay] = useState('')
   const [humanizedEssay, setHumanizedEssay] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const navigate = useNavigate()
 
@@ -30,32 +29,16 @@ function EssayInputCard() {
     }
   }
 
-  const handleAnalyze = async () => {
-    setIsLoading(true)
+  const handleAnalyze = () => {
     setError(null)
 
-    try {
-      const response = await fetch('/full-analysis', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ai_text: aiEssay,
-          humanized_text: humanizedEssay
-        })
-      })
-
-      const data = await response.json()
-      if (!response.ok) {
-        throw new Error(data.error || 'An unknown error occurred.')
+    navigate('/results', {
+      state: {
+        aiEssay,
+        humanizedEssay,
+        numQuestions: 10
       }
-
-      // On success, navigate to the results page with the data
-      navigate('/results', { state: { results: data } })
-    } catch (err: any) {
-      setError(err.message)
-    } finally {
-      setIsLoading(false)
-    }
+    })
   }
 
   return (
@@ -74,7 +57,6 @@ function EssayInputCard() {
               value={aiEssay}
               onChange={(e) => setAiEssay(e.target.value)}
               style={essayTextareaStyle}
-              disabled={isLoading}
             />
           </div>
 
@@ -88,7 +70,6 @@ function EssayInputCard() {
               value={humanizedEssay}
               onChange={(e) => setHumanizedEssay(e.target.value)}
               style={essayTextareaStyle}
-              disabled={isLoading}
             />
           </div>
         </div>
@@ -98,9 +79,9 @@ function EssayInputCard() {
           <button
             onClick={handleAnalyze}
             style={essayAnalyzeButtonStyle}
-            disabled={!aiEssay || !humanizedEssay || isLoading}
+            disabled={!aiEssay || !humanizedEssay}
           >
-            {isLoading ? 'Analyzing...' : 'Analyze'}
+            Analyze
           </button>
         </div>
       </div> 

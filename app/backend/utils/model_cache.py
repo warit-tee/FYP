@@ -243,6 +243,7 @@ def get_openai_client():
         )
         return None
 
+    print("Azure OpenAI client initialized successfully.")
     return _openai_client
 
 

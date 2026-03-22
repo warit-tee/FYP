@@ -39,8 +39,8 @@ def health():
     return jsonify({"status": "ok"})
 
 
-@app.route("/compare", methods=["POST"])
-def compare():
+@app.route("/similarity", methods=["POST"])
+def similarity_route():
     """
     Cosine similarity + difference between the two essays.
 
@@ -199,14 +199,14 @@ def factual():
 @app.route("/full-analysis", methods=["POST"])
 def full_analysis():
     """
-    Runs all analyses (comparison, detectability, emotions, tone, factual)
+    Runs all analyses (similarity, detectability, emotions, tone, factual)
     in one request.
 
     Body:  { "ai_text": "...", "humanized_text": "...", "num_questions": 10 }
 
     Response:
     {
-        "comparison":  { "similarity": {...}, "difference": {...} },
+        "similarity":  { "similarity": {...}, "difference": {...} },
         "tone": {
             "ai":              { "formal", "informal", "sentence_count", "sentence_scores" },
             "humanized":       { ... },
@@ -237,7 +237,7 @@ def full_analysis():
     )
 
     return jsonify({
-        "comparison": ai_essay.compare(human_essay),
+        "similarity": ai_essay.compare(human_essay),
         "tone": {
             "ai":              tone_result["text1"],
             "humanized":       tone_result["text2"],

@@ -1,0 +1,38 @@
+.loading-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	padding: 2rem 0;
+}
+
+.spinner {
+	width: 24px;
+	height: 24px;
+	border: 3px solid #d8e0f2;
+	border-top-color: #4c64f4;
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
+}
+
+.analysis-text-output {
+	white-space: pre-wrap;
+	word-break: break-word;
+	background: #f7f8fb;
+	border: 1px solid #dbe1ec;
+	border-radius: 10px;
+	padding: 1rem;
+	line-height: 1.5;
+	margin: 0;
+	max-height: 70vh;
+	overflow: auto;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
