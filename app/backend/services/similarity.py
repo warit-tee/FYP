@@ -1,8 +1,8 @@
 import re
 
 import numpy as np
-# import torch
-# import torch.nn.functional as F
+import torch
+import torch.nn.functional as F
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -11,7 +11,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 
-from utils.model_cache import get_sbert, get_tfidf_vectorizer
+from utils.model_cache import get_sbert, get_tfidf_vectorizer, get_nemotron_model, has_gpu
 
 # ── One-time NLTK downloads ─────────────────────────────────────────────────
 for _pkg in ("punkt", "punkt_tab", "stopwords"):
@@ -82,58 +82,58 @@ def sbert_similarity(text1: str, text2: str) -> float:
 
 # # ── Nemotron (local HuggingFace, mirrors llama_nemotron_8b.ipynb) ──────────
 #
-# _STS_INSTRUCTION = "Retrieve semantically similar text."
-#
-#
-# def _get_nemotron_embedding(text: str) -> np.ndarray:
-#     """
-#     Compute a single embedding using the local Nemotron model.
-#     Follows the exact procedure in llama_nemotron_8b.ipynb:
-#       - Prepend instruction
-#       - Tokenise with left-padding, max_length=8192
-#       - Mean-pool over non-padded tokens
-#       - L2-normalise
-#     """
-#     tokenizer, model = get_nemotron_model()
-#     device = next(model.parameters()).device
-#
-#     input_text = f"Instruct: {_STS_INSTRUCTION}\nQuery: {text}"
-#
-#     inputs = tokenizer(
-#         input_text,
-#         max_length=8192,
-#         padding=True,
-#         truncation=True,
-#         return_tensors="pt",
-#     ).to(device)
-#
-#     with torch.no_grad():
-#         output = model(**inputs)
-#
-#     token_embeddings = output.last_hidden_state          # (1, seq_len, hidden)
-#     attention_mask   = inputs["attention_mask"]          # (1, seq_len)
-#
-#     mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
-#     sum_emb  = torch.sum(token_embeddings * mask_expanded, dim=1)
-#     sum_mask = torch.clamp(mask_expanded.sum(dim=1), min=1e-9)
-#     mean_emb = sum_emb / sum_mask                        # (1, hidden)
-#
-#     normalised = F.normalize(mean_emb, p=2, dim=1)      # L2 norm
-#     return normalised[0].cpu().numpy()
-#
-#
-# def nemotron_similarity(text1: str, text2: str) -> tuple[float | None, str | None]:
-#     """
-#     Returns (similarity_score, error_message).
-#     error_message is None on success; score is None on failure.
-#     """
-#     try:
-#         emb1 = _get_nemotron_embedding(text1)
-#         emb2 = _get_nemotron_embedding(text2)
-#         sim  = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
-#         return float(sim), None
-#     except Exception as exc:
-#         return None, str(exc)
+_STS_INSTRUCTION = "Retrieve semantically similar text."
+
+
+def _get_nemotron_embedding(text: str) -> np.ndarray:
+    """
+    Compute a single embedding using the local Nemotron model.
+    Follows the exact procedure in llama_nemotron_8b.ipynb:
+      - Prepend instruction
+      - Tokenise with left-padding, max_length=8192
+      - Mean-pool over non-padded tokens
+      - L2-normalise
+    """
+    tokenizer, model = get_nemotron_model()
+    device = next(model.parameters()).device
+
+    input_text = f"Instruct: {_STS_INSTRUCTION}\nQuery: {text}"
+
+    inputs = tokenizer(
+        input_text,
+        max_length=8192,
+        padding=True,
+        truncation=True,
+        return_tensors="pt",
+    ).to(device)
+
+    with torch.no_grad():
+        output = model(**inputs)
+
+    token_embeddings = output.last_hidden_state          # (1, seq_len, hidden)
+    attention_mask   = inputs["attention_mask"]          # (1, seq_len)
+
+    mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
+    sum_emb  = torch.sum(token_embeddings * mask_expanded, dim=1)
+    sum_mask = torch.clamp(mask_expanded.sum(dim=1), min=1e-9)
+    mean_emb = sum_emb / sum_mask                        # (1, hidden)
+
+    normalised = F.normalize(mean_emb, p=2, dim=1)      # L2 norm
+    return normalised[0].cpu().numpy()
+
+
+def nemotron_similarity(text1: str, text2: str) -> tuple[float | None, str | None]:
+    """
+    Returns (similarity_score, error_message).
+    error_message is None on success; score is None on failure.
+    """
+    try:
+        emb1 = _get_nemotron_embedding(text1)
+        emb2 = _get_nemotron_embedding(text2)
+        sim  = np.dot(emb1, emb2) / (np.linalg.norm(emb1) * np.linalg.norm(emb2))
+        return float(sim), None
+    except Exception as exc:
+        return None, str(exc)
 
 
 # ── Combined entry point ─────────────────────────────────────────────────────
@@ -141,18 +141,21 @@ def sbert_similarity(text1: str, text2: str) -> float:
 def all_methods(text1: str, text2: str) -> dict:
     tfidf        = tfidf_similarity(text1, text2)
     sbert        = sbert_similarity(text1, text2)
-    # nem, nem_err = nemotron_similarity(text1, text2)
+    if has_gpu():
+        nem, nem_err = nemotron_similarity(text1, text2)
+    else:
+        nem, nem_err = None, "Nemotron disabled on CPU-only environments"
 
     result = {
         "similarity": {
             "tfidf":    round(tfidf, 6),
             "sbert":    round(sbert, 6),
-            # "nemotron": round(nem, 6) if nem is not None else None,
+            "nemotron": round(nem, 6) if nem is not None else None,
         },
         "difference": {
             "tfidf":    round(1 - tfidf, 6),
             "sbert":    round(1 - sbert, 6),
-            # "nemotron": round(1 - nem,   6) if nem is not None else None,
+            "nemotron": round(1 - nem,   6) if nem is not None else None,
         },
     }
     # if nem_err:

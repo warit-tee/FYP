@@ -6,3 +6,8 @@ data.zip
 factual/LICENSE.txt
 factual/README.md
 .DS_Store
+demos/
+*.db
+factual/Llama-3.1/
+factual/demos/
+factual/*.db

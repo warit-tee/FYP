@@ -8,8 +8,8 @@ from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import (
     pipeline,
-    # AutoTokenizer,
-    # AutoModel,
+    AutoTokenizer,
+    AutoModel,
     XLMRobertaTokenizerFast,
     XLMRobertaForSequenceClassification,
 )
@@ -23,10 +23,21 @@ from dotenv import load_dotenv
 _sbert_model = None
 
 
+def _get_torch_device() -> str:
+    return "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def has_gpu() -> bool:
+    return _get_torch_device() == "cuda"
+
+
 def get_sbert() -> SentenceTransformer:
     global _sbert_model
     if _sbert_model is None:
-        _sbert_model = SentenceTransformer("all-MiniLM-L6-v2")
+        _sbert_model = SentenceTransformer(
+            "all-MiniLM-L6-v2",
+            device=_get_torch_device(),
+        )
     return _sbert_model
 
 
@@ -38,58 +49,67 @@ _emotion_pipeline = None
 def get_emotion_pipeline():
     global _emotion_pipeline
     if _emotion_pipeline is None:
+        pipeline_device = 0 if has_gpu() else -1
         _emotion_pipeline = pipeline(
             "text-classification",
             model="j-hartmann/emotion-english-distilroberta-base",
             top_k=None,
+            device=pipeline_device,
         )
     return _emotion_pipeline
 
 
-# # ── Nemotron (nvidia/llama-embed-nemotron-8b) ───────────────────────────────
-#
-# _NEMOTRON_MODEL_NAME = "nvidia/llama-embed-nemotron-8b"
-#
-# _nemotron_tokenizer = None
-# _nemotron_model     = None
-#
-#
-# def get_nemotron_model():
-#     """
-#     Returns (tokenizer, model) for nvidia/llama-embed-nemotron-8b.
-#
-#     Loading strategy (mirrors llama_nemotron_8b.ipynb):
-#       - padding_side = "left"  (required by the model)
-#       - dtype = torch.float32
-#       - Move to CUDA if available, else CPU
-#       - Set eval() mode
-#
-#     Raises RuntimeError if the model cannot be loaded (e.g. not enough VRAM/RAM).
-#     """
-#     global _nemotron_tokenizer, _nemotron_model
-#
-#     if _nemotron_tokenizer is None or _nemotron_model is None:
-#         try:
-#             _nemotron_tokenizer = AutoTokenizer.from_pretrained(
-#                 _NEMOTRON_MODEL_NAME,
-#                 trust_remote_code=True,
-#                 padding_side="left",
-#             )
-#             _nemotron_model = AutoModel.from_pretrained(
-#                 _NEMOTRON_MODEL_NAME,
-#                 trust_remote_code=True,
-#                 dtype=torch.float32,
-#             )
-#             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-#             _nemotron_model.to(device)
-#             _nemotron_model.eval()
-#
-#         except Exception as exc:
-#             _nemotron_tokenizer = None
-#             _nemotron_model     = None
-#             raise RuntimeError(f"Failed to load Nemotron model: {exc}") from exc
-#
-#     return _nemotron_tokenizer, _nemotron_model
+# ── Nemotron (nvidia/llama-embed-nemotron-8b) ───────────────────────────────
+
+_NEMOTRON_MODEL_NAME = "nvidia/llama-embed-nemotron-8b"
+
+_nemotron_tokenizer = None
+_nemotron_model     = None
+
+
+def get_nemotron_model():
+    """
+    Returns (tokenizer, model) for nvidia/llama-embed-nemotron-8b.
+
+    Loading strategy (mirrors llama_nemotron_8b.ipynb):
+      - padding_side = "left"  (required by the model)
+      - dtype = torch.float32
+      - Move to CUDA if available, else CPU
+      - Set eval() mode
+
+    Raises RuntimeError if the model cannot be loaded (e.g. not enough VRAM/RAM).
+    """
+    global _nemotron_tokenizer, _nemotron_model
+
+    if _nemotron_tokenizer is None or _nemotron_model is None:
+        try:
+            if not has_gpu():
+                raise RuntimeError(
+                    "Nemotron is disabled on CPU-only environments due to model size"
+                )
+
+            device = _get_torch_device()
+            model_dtype = torch.float16 if device == "cuda" else torch.float32
+
+            _nemotron_tokenizer = AutoTokenizer.from_pretrained(
+                _NEMOTRON_MODEL_NAME,
+                trust_remote_code=True,
+                padding_side="left",
+            )
+            _nemotron_model = AutoModel.from_pretrained(
+                _NEMOTRON_MODEL_NAME,
+                trust_remote_code=True,
+                torch_dtype=model_dtype,
+            )
+            _nemotron_model.to(device)
+            _nemotron_model.eval()
+
+        except Exception as exc:
+            _nemotron_tokenizer = None
+            _nemotron_model     = None
+            raise RuntimeError(f"Failed to load Nemotron model: {exc}") from exc
+
+    return _nemotron_tokenizer, _nemotron_model
 
 
 # ── Formality classifier ──────────────────────────────────────────────────────
@@ -118,6 +138,7 @@ def get_formality_model():
             _formality_model = XLMRobertaForSequenceClassification.from_pretrained(
                 _FORMALITY_MODEL_NAME
             )
+            _formality_model.to(_get_torch_device())
             _formality_model.eval()
         except Exception as exc:
             _formality_tokenizer = None
