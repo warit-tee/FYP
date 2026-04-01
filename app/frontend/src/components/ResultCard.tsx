@@ -341,21 +341,31 @@ function ResultCard() {
       results.factual?.reversed?.score,
     ])
 
-    const aiDetectability =
+    const aiDetectabilityZeroGPT =
       results.detectability?.ai?.zerogpt?.fake_percentage !== undefined
         ? results.detectability.ai.zerogpt.fake_percentage / 100
         : null
 
-    const humanizedDetectability =
+    const humanizedDetectabilityZeroGPT =
       results.detectability?.humanized?.zerogpt?.fake_percentage !== undefined
         ? results.detectability.humanized.zerogpt.fake_percentage / 100
         : null
 
-    const detectabilityDelta =
-      aiDetectability !== null && humanizedDetectability !== null
-        ? aiDetectability - humanizedDetectability 
+    const aiDetectabilitySapling = results.detectability?.ai?.sapling?.score ?? null
+    const humanizedDetectabilitySapling = results.detectability?.humanized?.sapling?.score ?? null
+
+    const detectabilityDeltaZeroGPT =
+      aiDetectabilityZeroGPT !== null && humanizedDetectabilityZeroGPT !== null
+        ? aiDetectabilityZeroGPT - humanizedDetectabilityZeroGPT
         : null
 
+    const detectabilityDeltaSapling =
+      aiDetectabilitySapling !== null && humanizedDetectabilitySapling !== null
+        ? aiDetectabilitySapling - humanizedDetectabilitySapling
+        : null
+      
+    const detectabilityDelta = averageAvailable([detectabilityDeltaZeroGPT, detectabilityDeltaSapling])
+    
     const formalityDelta =
       results.tone?.delta_formality !== null && results.tone?.delta_formality !== undefined
         ? results.tone.delta_formality
@@ -583,15 +593,15 @@ function ResultCard() {
                   <MetricRow
                     label="Sapling"
                     tag="AI text"
-                    value={null}
-                    description={results.detectability?.ai?.sapling?.error || 'No score returned.'}
+                    value={results.detectability?.ai?.sapling?.score ??  null}
+                    description={results.detectability?.ai?.sapling?.error || 'AI probability for the original AI text from Sapling.'}
                   />
 
                   <MetricRow
                     label="Sapling"
                     tag="Humanized text"
-                    value={null}
-                    description={results.detectability?.humanized?.sapling?.error || 'No score returned.'}
+                    value={results.detectability?.humanized?.sapling?.score ?? null}
+                    description={results.detectability?.humanized?.sapling?.error || 'AI probability for the humanized text from Sapling.'}
                   />
 
                   <MetricRow
@@ -602,7 +612,7 @@ function ResultCard() {
                         ? results.detectability.ai.zerogpt.fake_percentage / 100
                         : null
                     }
-                    description="AI probability for the original AI text."
+                    description={results.detectability?.ai?.zerogpt?.error ||"AI probability for the original AI text from ZeroGPT."}
                   />
 
                   <MetricRow
@@ -613,7 +623,7 @@ function ResultCard() {
                         ? results.detectability.humanized.zerogpt.fake_percentage / 100
                         : null
                     }
-                    description="AI probability for the humanized text."
+                    description={results.detectability?.humanized?.zerogpt?.error || "AI probability for the humanized text from ZeroGPT."}
                   />
                 </SectionCard>
 
