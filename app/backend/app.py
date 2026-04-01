@@ -5,11 +5,13 @@ from dotenv import load_dotenv
 from models.essay import Essay
 from services import factual as factual_svc
 from services import tone
+import logging
 
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+logging.basicConfig(level=logging.INFO)
 
 
 # ── helpers ────────────────────────────────────────────────────────────────
