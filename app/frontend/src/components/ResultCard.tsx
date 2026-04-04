@@ -375,7 +375,13 @@ function ResultCard() {
     const topHumanizedEmotion = getTopEmotion(results.emotions?.humanized)
     const topEmotionDelta = getTopEmotionDelta(results.emotions?.ai, results.emotions?.humanized)
 
-    const toneShiftAverage = averageAvailable([formalityDelta, topEmotionDelta])
+    const formalityPreservation =
+      formalityDelta !== null ? Math.max(0, 1 - Math.abs(formalityDelta)) : null
+
+    const emotionPreservation =
+      topEmotionDelta !== null ? Math.max(0, 1 - topEmotionDelta) : null
+
+    const tonePreservation = averageAvailable([formalityPreservation, emotionPreservation])
 
     const aiEmotionMap = getEmotionMap(results.emotions?.ai)
     const humanizedEmotionMap = getEmotionMap(results.emotions?.humanized)
@@ -394,7 +400,7 @@ function ResultCard() {
       topAiEmotion,
       topHumanizedEmotion,
       topEmotionDelta,
-      toneShiftAverage,
+      tonePreservation,
       aiEmotionMap,
       humanizedEmotionMap,
       emotionLabels,
@@ -464,8 +470,8 @@ function ResultCard() {
               <StatCard
                 title="Tone & Sentiment"
                 chip="Combined"
-                value={derived.toneShiftAverage}
-                description="Average of formality shift and top-emotion change."
+                value={derived.tonePreservation}
+                description="How well formality and emotional tone were preserved after humanization."
               />
 
               <StatCard
