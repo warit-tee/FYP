@@ -24,7 +24,7 @@ function Home() {
 
         <p style={homeDescriptionStyle}>
           HumanizeTrace lets you generate AI text, apply different humanization tools,
-          and analyze how the meaning, tone, and structure evolve through the transformation pipeline.
+          and analyze how semantic content, information faithfulness, tone, and sentiment shift through the transformation pipeline.
         </p>
 
         <button style={homeButtonStyle} onClick={() => navigate('/input')}>

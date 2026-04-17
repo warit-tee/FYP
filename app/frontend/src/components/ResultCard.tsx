@@ -526,11 +526,26 @@ function ResultCard() {
 
                 <div style={infoBoxStackStyle}>
                   <InfoBox title="Score interpretation">
-                    <ul style={{ margin: 0, paddingLeft: '1.1rem' }}>
-                      <li>0.85–1.00: strong semantic retention</li>
-                      <li>0.65–0.85: moderate drift</li>
-                      <li>Below 0.65: substantial drift</li>
-                    </ul>
+                    <div>
+                      <strong>TF-IDF</strong>
+                      <ul style={{ margin: '0 0 0.5rem 0', paddingLeft: '1.1rem' }}>
+                        <li>&gt;0.73: Strong semantic retention</li>
+                        <li>0.57-0.74: Moderate drift</li>
+                        <li>&lt;0.57: Substantial drift</li>
+                      </ul>
+                      <strong>SBERT</strong>
+                      <ul style={{ margin: '0 0 0.5rem 0', paddingLeft: '1.1rem' }}>
+                        <li>&gt;0.91: Strong semantic retention</li>
+                        <li>0.84-0.91: Moderate drift</li>
+                        <li>&lt;0.84: Substantial drift</li>
+                      </ul>
+                      <strong>Nemotron</strong>
+                      <ul style={{ margin: 0, paddingLeft: '1.1rem' }}>
+                        <li>&gt;0.96: Strong semantic retention</li>
+                        <li>0.90-0.96: Moderate drift</li>
+                        <li>&lt;0.90: Substantial drift</li>
+                      </ul>
+                    </div>
                   </InfoBox>
 
                   <InfoBox title="Differences">
@@ -571,19 +586,19 @@ function ResultCard() {
                 </SectionCard>
 
                 <div style={infoBoxStackStyle}>
+                  <InfoBox title="Score interpretation">
+                    <ul style={{ margin: 0, paddingLeft: '1.1rem' }}>
+                      <li>&gt;0.95: High factual consistency</li>
+                      <li>&lt;0.85: Small factual consistency</li>
+                    </ul>
+                  </InfoBox>
+
                   <InfoBox title="Quick note">
                     <p style={{ marginTop: 0 }}>
                       Faithfulness is different from detectability.
                     </p>
                     <p style={{ marginBottom: 0 }}>
                       A text can preserve facts well but still be highly detectable as AI-generated.
-                    </p>
-                  </InfoBox>
-
-                  <InfoBox title="Current status">
-                    <p><strong>Forward:</strong> {results.factual?.forward?.error || 'Available'}</p>
-                    <p style={{ marginBottom: 0 }}>
-                      <strong>Reversed:</strong> {results.factual?.reversed?.error || 'Available'}
                     </p>
                   </InfoBox>
                 </div>
@@ -634,18 +649,28 @@ function ResultCard() {
                 </SectionCard>
 
                 <div style={infoBoxStackStyle}>
-                  <InfoBox title="How to read detector results">
-                    <p style={{ marginTop: 0 }}>
-                      Higher scores usually mean the detector is more confident the text is AI-generated.
-                    </p>
-                    <p style={{ marginBottom: 0 }}>
-                      Detector outputs are useful signals, but they are not ground truth.
-                    </p>
+                  <InfoBox title="Score interpretation">
+                    <div>
+                      <strong>ZeroGPT</strong>
+                      <ul style={{ margin: '0 0 0.5rem 0', paddingLeft: '1.1rem' }}>
+                        <li>&gt;85.2: High AI confidence</li>
+                        <li>&lt;42.5: Low AI confidence</li>
+                      </ul>
+                      <strong>Sapling</strong>
+                      <ul style={{ margin: 0, paddingLeft: '1.1rem' }}>
+                        <li>&gt;27.9: High AI confidence</li>
+                        <li>&lt;2.1: Low AI confidence</li>
+                      </ul>
+                    </div>
                   </InfoBox>
 
-                  <InfoBox title="Current availability">
-                    <p><strong>Sapling:</strong> available as status/error in this sample</p>
-                    <p><strong>ZeroGPT:</strong> available as percentage</p>
+                  <InfoBox title="About AI Detectors">
+                    <p style={{ marginTop: 0 }}>
+                      These tools analyze text for patterns commonly found in AI-generated content.
+                    </p>
+                    <p style={{ marginBottom: 0 }}>
+                      Scores indicate the detector's confidence that a text was written by AI, not a definitive judgment.
+                    </p>
                   </InfoBox>
                 </div>
               </div>
