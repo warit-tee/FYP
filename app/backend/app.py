@@ -7,6 +7,8 @@ from services import factual as factual_svc
 from services import tone
 import logging
 
+import time
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -81,10 +83,14 @@ def detectability():
         ai_essay, human_essay = parse_essays(request.get_json(force=True))
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
+    
+    ai_score = ai_essay.get_detectability()
+    time.sleep(2)  # brief pause to avoid hammering APIs in quick succession
+    humanized_score = human_essay.get_detectability()
 
     return jsonify({
-        "ai":       ai_essay.get_detectability(),
-        "humanized": human_essay.get_detectability(),
+        "ai":       ai_score,
+        "humanized": humanized_score,
     })
 
 
